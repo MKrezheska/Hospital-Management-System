@@ -1,0 +1,84 @@
+﻿@model HMS.Models.ViewModel.DoctorsViewModel
+@using HMS.Extensions
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+<h2 class="text-info">Додади Доктор</h2>
+
+<form method="post" enctype="multipart/form-data">
+    <div class="p-4 border rounded">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Doctors.Name"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Doctors.Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Doctors.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Doctors.PhoneNumber"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Doctors.PhoneNumber" class="form-control" />
+            </div>
+            <span asp-validation-for="Doctors.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Doctors.Image"></label>
+            </div>
+            <div class="col-5">
+                <input type="file" name="files" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Specialties"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="@Model.Doctors.SpecialityId" asp-items="Model.Specialties.ToSelectListItem(Model.Doctors.SpecialityId)" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="SubSpecialties"></label>
+            </div>
+            <div class="col-5">
+                <select asp-for="@Model.Doctors.SubSpecialtiesId" asp-items="Model.SubSpecialties.ToSelectListItem(Model.Doctors.SubSpecialtiesId)" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Doctors.Focus"></label>
+            </div>
+            <div class="col-5">
+                <input asp-for="Doctors.Focus" class="form-control" />
+            </div>
+            <span asp-validation-for="Doctors.Focus" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Doctors.Available"></label>
+            </div>
+            <div class="col-5">
+                <input type="checkbox" asp-for="Doctors.Available"  />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Create" />
+            <a asp-action="Index" class="btn btn-success">Назад кон листа</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,129 @@
+﻿@model HMS.Models.ViewModel.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form method="post">
+    <br /><br />
+    <h2 class="text-info">Кошничка со прегледи</h2>
+    <br />
+    @if (Model.Doctors.Count > 0)
+    {
+        <div class="container border border-secondary rounded" style="padding:15px;">
+            <div class="row">
+                <div class="col-8" style="border-right:1px solid #bbb9b9;">
+                    <table class="table table-striped" width="100%">
+                        <tr class="table-info">
+                            <th style="text-align:center; width:20%"></th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.Doctors.FirstOrDefault().Name"></label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.Doctors.FirstOrDefault().PhoneNumber"></label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.Doctors.FirstOrDefault().Focus"></label>
+                            </th>
+                            <th style="text-align:center;">
+                                <label asp-for="@Model.Doctors.FirstOrDefault().Specialties.Name"></label>
+                            </th>
+                            <th style="text-align:center;"></th>
+                        </tr>
+                        @foreach (var item in Model.Doctors)
+                        {
+                            <tr style="padding:50px;">
+                                <td>
+                                    <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                                        <img src="@item.Image" width="100%" style="margin:auto; display:block; border-radius:5px; border:1px solid #bbb9b9;" />
+                                    </a>
+                                </td>
+                                <td style="text-align:center">
+                                    @Html.DisplayFor(c => item.Name)
+                                </td>
+                                <td style="text-align:center">
+                                    @Html.DisplayFor(c => item.PhoneNumber)
+                                </td>
+                                <td style="text-align:center">
+                                    @Html.DisplayFor(c => item.Focus)
+                                </td>
+                                <td style="text-align:center">
+                                    @Html.DisplayFor(c => item.Specialties.Name)
+                                </td>
+                                <td style="text-align:center">
+                                    <button type="submit" class="btn btn-danger" asp-action="remove" asp-route-id="@item.Id">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        }
+                    </table>
+                </div>
+                <div class="col-4" style="padding-left:30px;">
+                    <div class="row">
+                        <div class="col-12">
+                            <label>Име : </label>
+                        </div>
+                        <div class="col-12" style="padding-bottom:15px">
+                            <input asp-for="@Model.Appointments.PatientName" class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            <label>Телефон : </label>
+                        </div>
+                        <div class="col-12" style="padding-bottom:15px">
+                            <input asp-for="@Model.Appointments.PatientPhoneNumber" class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            <label>Емаил  : </label>
+                        </div>
+                        <div class="col-12" style="padding-bottom:15px">
+                            <input asp-for="@Model.Appointments.PatientEmail" class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            <label>Датум на термин : </label>
+                        </div>
+                        <div class="col-12" style="padding-bottom:15px">
+                            <input asp-for="@Model.Appointments.AppointmentDate" value="" type="text" id="datepicker" class="form-control" />
+                        </div>
+                        <div class="col-12">
+                            <label>Време на термин : </label>
+                        </div>
+                        <div class="col-12" style="padding-bottom:15px">
+                            <input asp-for="@Model.Appointments.AppointmentTime" value="" type="text" class="timepicker form-control" />
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" id="btnPlaceOrder" class="btn btn-success">Закажи термин</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div>Нема додадено доктори за преглед.</div>
+
+    }
+</form>
+
+@section Scripts{ 
+    <script>
+        $('.timepicker').timepicker({
+            timeFormat: 'h:mm p',
+            interval: 30,
+            minTime: '10',
+            maxTime: '3:00pm',
+            startTime: '10:00',
+            dynamic: true,
+            dropdown: true,
+            scrollbar: true
+        });
+
+        $(function () {
+            $("#datepicker").datepicker({
+                minDate: +1, maxDate: "+3M"
+            });
+        });
+    </script>
+}

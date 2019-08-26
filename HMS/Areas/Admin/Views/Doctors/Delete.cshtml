@@ -1,0 +1,81 @@
+﻿@model HMS.Models.ViewModel.DoctorsViewModel
+@using HMS.Extensions
+
+
+<br />
+<h2 class="text-info">Избриши доктор</h2>
+
+<form method="post">
+    <div class="p-4 border rounded row">
+        <input hidden asp-for="Doctors.Id" />
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Doctors.Name"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Doctors.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Doctors.PhoneNumber"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Doctors.PhoneNumber" readonly class="form-control" />
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Specialties"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Doctors.Specialties.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="SubSpecialties"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Doctors.SubSpecialties.Name" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Doctors.Focus"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Doctors.Focus" readonly class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Doctors.Available"></label>
+                </div>
+                <div class="col-8">
+                    <input type="checkbox" readonly class="form-control" asp-for="Doctors.Available" />
+                </div>
+            </div>
+        </div>
+        <div class="col-1">
+
+        </div>
+        <div class="col-3">
+            <img src="@Model.Doctors.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+        </div>
+
+
+        <br />
+        <div class="form-group">
+            <input type="submit" class="btn btn-danger" value="Delete" />
+            <a asp-action="Index" class="btn btn-success">Назад кон листа</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

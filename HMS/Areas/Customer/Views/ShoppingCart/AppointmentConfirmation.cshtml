@@ -1,0 +1,20 @@
+﻿@model HMS.Models.ViewModel.ShoppingCartViewModel
+
+@{
+    ViewData["Title"] = "AppointmentConfirmation";
+}
+
+<br />
+<h2 class="text-info">Одобрување на термин</h2>
+<div class="form-text">
+    Вашиот термин е закажан. Одговор на вашето барање за термин ќе биде процесирано во најбрз можен рок. Можете да не' контактирате во било кое време доколку имате било какви прашања.
+</div>
+<br />
+
+<partial name="~/Views/Shared/_AppointmentCustomerDetails.cshtml" model="Model.Appointments" />
+<br />
+
+<partial name="~/Views/Shared/_AppointmentProductDetails.cshtml" model="Model.Doctors" />
+
+<a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-success"> Назад кон листа</a>
+

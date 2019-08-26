@@ -1,0 +1,46 @@
+﻿@model HMS.Models.Appointments
+
+<h4 class="text-success">Детали за термин</h4>
+
+<div style="height:100px; background-color:aliceblue" class="container border">
+    <div class="col-12">
+        <div class="row" style="padding-top:10px;">
+            <div class="col-2">
+                Име
+            </div>
+            <div class="col-3">
+                <input asp-for="@Model.PatientName" readonly class="form-control" />
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+                Емаил
+            </div>
+            <div class="col-3">
+                <input asp-for="@Model.PatientEmail" readonly class="form-control" />
+            </div>
+
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row" style="padding-top:10px;">
+            <div class="col-2">
+                Телефон
+            </div>
+            <div class="col-3">
+                <input asp-for="@Model.PatientPhoneNumber" readonly class="form-control" />
+            </div>
+            <div class="col-2">
+
+            </div>
+            <div class="col-2">
+                Датум за термин
+            </div>
+            <div class="col-3">
+                <input asp-for="@Model.AppointmentDate" readonly class="form-control" />
+            </div>
+
+        </div>
+    </div>
+</div>
