@@ -16,8 +16,8 @@
 
 <br />
 <div>
-    <table class="table table-striped border">
-        <tr class="table-info">
+    <table id="table" class="table table-active table-bordered table-hover">
+        <tr class="thead-dark">
             <th>
                 @Html.DisplayNameFor(m => m.Name)
             </th>
@@ -34,34 +34,41 @@
                 @Html.DisplayNameFor(m => m.SubSpecialties)
             </th>
             <th></th>
-            <th></th>
+            
         </tr>
 
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(m => item.Name)
-            </td>
-            <td>
-                @String.Format("{0:c}",item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Available)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Specialties.Name)
-            </td>
-            <td>
-                @if (!item.SubSpecialties.Name.Equals("--None--"))
-                {
-                @Html.DisplayFor(m => item.SubSpecialties.Name)
-                }
-            </td>
-            <td>
-                <partial name="_TableButtonPartial" model="item.Id" />
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.PhoneNumber)
+                </td>
+                <td>
+                    @if (item.Available == true)
+                    {
+                        <i class="fas fa-check"></i>
+                    }
+                    else
+                    {
+                        <i class="fas fa-times"></i>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Specialties.Name)
+                </td>
+                <td>
+                    @if (!item.SubSpecialties.Name.Equals("--None--"))
+                    {
+                        @Html.DisplayFor(m => item.SubSpecialties.Name)
+                    }
+                </td>
+                
+                    <partial name="_TableButtonPartial" model="item.Id" />
+                
+            </tr>
 
         }
     </table>
