@@ -1,3 +1,9 @@
 ﻿@model HMS.Models.ApplicationUser
 
-Здраво! @Model.Name <i class="far fa-user"></i>
+
+Здраво!
+@if (!(Model is null))
+{
+    @Model.Name
+}
+    <i class="far fa-user"></i>

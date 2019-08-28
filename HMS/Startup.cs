@@ -17,12 +17,17 @@ namespace HMS
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
-            Configuration = configuration; 
+            Configuration = configuration;
+            _configSecrets = new ConfigurationBuilder()
+                            .SetBasePath(env.ContentRootPath)
+                            .AddJsonFile("configurationSecrets.json")
+                            .Build();
         }
 
         public IConfiguration Configuration { get; }
+        public IConfigurationRoot _configSecrets { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -43,6 +48,16 @@ namespace HMS
                 .AddDefaultTokenProviders();
 
             services.AddScoped<IDbInitializer, DbInitializer>();
+
+
+            services.AddAuthentication()
+            .AddGoogle(options =>
+            {
+                options.ClientId = _configSecrets["GoogleOAuth:ClientId"];
+                options.ClientSecret = _configSecrets["GoogleOAuth:ClientSecret"];
+            });
+
+         
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

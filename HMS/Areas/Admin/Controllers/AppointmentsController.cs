@@ -130,7 +130,7 @@ namespace HMS.Areas.Admin.Controllers
                                                    join a in _db.DoctorsSelectedForAppointment
                                                    on p.Id equals a.DoctorId
                                                    where a.AppointmentId == id
-                                                   select p).Include("ProductTypes");
+                                                   select p).Include("Specialties");
 
             AppointmentDetailsViewModel objAppointmentVM = new AppointmentDetailsViewModel()
             {
@@ -188,7 +188,7 @@ namespace HMS.Areas.Admin.Controllers
                                                       join a in _db.DoctorsSelectedForAppointment
                                                       on p.Id equals a.DoctorId
                                                       where a.AppointmentId == id
-                                                      select p).Include("ProductTypes");
+                                                      select p).Include("Specialties");
 
             AppointmentDetailsViewModel objAppointmentVM = new AppointmentDetailsViewModel()
             {
@@ -214,7 +214,7 @@ namespace HMS.Areas.Admin.Controllers
                                                      join a in _db.DoctorsSelectedForAppointment
                                                       on p.Id equals a.DoctorId
                                                       where a.AppointmentId == id
-                                                      select p).Include("ProductTypes");
+                                                      select p).Include("Specialties");
 
             AppointmentDetailsViewModel objAppointmentVM = new AppointmentDetailsViewModel()
             {
