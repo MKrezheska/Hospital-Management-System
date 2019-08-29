@@ -1,0 +1,93 @@
+﻿@model HMS.Models.ViewModel.AppointmentViewModel
+@{
+    //Not loading default Layout.cshtml
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospital Management System</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+
+</head>
+<body>
+    <div class="text-center">
+        <img src="~/images/logo.jpg" width="15%" />
+    </div>
+
+    <form method="get">
+        <br /><br />
+        <h1 class="text-dark text-center">Листа на термини</h1>
+        <h5 class="text-info text-center">Датум: @DateTime.Now.ToString("MM/dd/yyyy HH:mm")</h5>
+        <br />
+
+        <br /><br />
+
+        <div>
+            <table class="table table-striped border">
+                <tr class="table-info">
+                    <th>
+                        @Html.DisplayNameFor(m => m.Appointments.FirstOrDefault().DoctorUser.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Appointments.FirstOrDefault().AppointmentDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Appointments.FirstOrDefault().PatientName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Appointments.FirstOrDefault().PatientPhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Appointments.FirstOrDefault().PatientEmail)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(m => m.Appointments.FirstOrDefault().isConfirmed)
+                    </th>
+                </tr>
+                @foreach (var item in Model.Appointments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.DoctorUser.Name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(m => item.AppointmentDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PatientName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PatientPhoneNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PatientEmail)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.isConfirmed)
+                        </td>
+
+                    </tr>
+
+                }
+            </table>
+        </div>
+
+        <div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+             page-class="btn border" page-class-normal="btn btn-default active"
+             page-class-selected="btn btn-primary active" class="btn-group m-1"></div>
+
+
+    </form>
+
+
+</body>
+</html>
+
+
+

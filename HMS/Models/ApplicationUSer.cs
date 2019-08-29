@@ -10,7 +10,7 @@ namespace HMS.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        [Display(Name = "Doctor Name")]
+        [Display(Name = "Доктор")]
         public string Name { get; set; }
 
         [NotMapped]
