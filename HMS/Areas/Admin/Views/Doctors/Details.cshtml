@@ -1,72 +1,102 @@
 ﻿@model HMS.Models.ViewModel.DoctorsViewModel
+
 @using HMS.Extensions
 
+
+
 <br />
+
 <h2 class="text-info">Детали за доктор</h2>
 
-    <div class="p-4 border rounded row">
-        <div class="col-8">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Doctors.Name"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Doctors.Name" readonly class="form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Doctors.PhoneNumber"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Doctors.PhoneNumber" readonly class="form-control" />
-                </div>
-            </div>
-           
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Specialties"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Doctors.Specialties.Name" readonly class="form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="SubSpecialties"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Doctors.SubSpecialties.Name" readonly  class="form-control"/>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Doctors.Focus"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Doctors.Focus" readonly class="form-control" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Doctors.Available"></label>
-                </div>
-                <div class="col-8">
-                    <input type="checkbox" readonly class="form-control" asp-for="Doctors.Available" />
-                </div>
-            </div>
-        </div>
-        <div class="col-1">
-
-        </div>
-        <div class="col-3">
-            <img src="@Model.Doctors.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
-        </div>
 
 
-        <br />
-        <div class="form-group">
-            <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Doctors.Id">Edit</a>
-            <a asp-action="Index" class="btn btn-success">Назад кон листа</a>
+<div class="p-4 border rounded row">
+    <div class="col-8">
+        <div class="form-group row">
+            <div class="col-4">
+                <p>Име: </p>
+            </div>
+            <div class="col-8">
+                <p>@Model.Doctors.Name</p>
+            </div>
+        </div>
+        <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
+        <div class="form-group row">
+            <div class="col-4">
+                <p>Тел. бр:</p>
+            </div>
+            <div class="col-8">
+                <p>@Model.Doctors.PhoneNumber</p>
+            </div>
+        </div>
+        <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
+        <div class="form-group row">
+            <div class="col-4">
+                <p>Специјалност: </p>
+            </div>
+            <div class="col-8">
+                <p>@Model.Doctors.Specialties.Name</p>
+            </div>
+        </div>
+        <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
+        <div class="form-group row">
+            <div class="col-4">
+                <p>Субспецијалност: </p>
+            </div>
+            <div class="col-8">
+                <p>@Model.Doctors.SubSpecialties.Name</p>
+            </div>
+        </div>
+        <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
+        <div class="form-group row">
+            <div class="col-4">
+                <p>Фокус: </p>
+            </div>
+            <div class="col-8">
+                <p>@Model.Doctors.Focus</p>
+            </div>
+        </div>
+        <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
+        <div class="form-group row">
+            <div class="col-4">
+                <p>Прима пациенти: </p>
+            </div>
+            <div class="col-8">
+                @if (Model.Doctors.Available == true)
+                {
+                    <i class="fas fa-check"></i>
+                }
+                else
+                {
+                    <i class="fas fa-times"></i>
+                }
+            </div>
         </div>
     </div>
+
+
+    <div class="col-4 mx-auto d-block">
+        <img src="@Model.Doctors.Image" width="100%" class="rounded-circle border border-info" />
+        <br /> <br />
+    </div>
+
+
+
+
+
+    <br />
+
+    <div class="form-group">
+
+        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model.Doctors.Id">Уреди доктор</a>
+
+        <a asp-action="Index" class="btn btn-success">Назад кон листа</a>
+
+    </div>
+
+</div>

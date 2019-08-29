@@ -6,7 +6,7 @@
 }
 
 <br />
-<h2 class="text-info">Додади Доктор</h2>
+<h2 class="text-info">Додај Доктор</h2>
 
 <form method="post" enctype="multipart/form-data">
     <div class="p-4 border rounded">
@@ -55,7 +55,7 @@
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="Doctors.Focus"></label>
+                <label>Фокус</label>
             </div>
             <div class="col-5">
                 <input asp-for="Doctors.Focus" class="form-control" />
@@ -64,7 +64,7 @@
         </div>
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="Doctors.Available"></label>
+                <label>Прима пациенти</label>
             </div>
             <div class="col-5">
                 <input type="checkbox" asp-for="Doctors.Available"  />
@@ -72,7 +72,7 @@
         </div>
         <br />
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Create" />
+            <input type="submit" class="btn btn-primary" value="Зачувај" />
             <a asp-action="Index" class="btn btn-success">Назад кон листа</a>
         </div>
     </div>
