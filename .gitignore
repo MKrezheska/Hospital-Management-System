@@ -255,8 +255,14 @@ paket-files/
 
 # CodeRush
 .cr/
+.cr/
 
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
+<<<<<<< .mine
 *.pyc
 HMS/configurationSecrets.json
+=======
+*.pyc
+/HMS/configurationSecrets.json
+>>>>>>> .theirs

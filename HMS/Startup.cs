@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using HMS.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Rotativa.AspNetCore;
 
 namespace HMS
 {
@@ -24,6 +25,8 @@ namespace HMS
                             .SetBasePath(env.ContentRootPath)
                             .AddJsonFile("configurationSecrets.json")
                             .Build();
+
+           
         }
 
         public IConfiguration Configuration { get; }
@@ -67,6 +70,8 @@ namespace HMS
                 options.Cookie.HttpOnly = true;
             });
 
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,6 +87,10 @@ namespace HMS
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+
+      
+
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -99,7 +108,9 @@ namespace HMS
             });
 
 
-
+            // var webRootPath = env.WebRootPath;
+            // call rotativa conf passing env to get web root path
+            RotativaConfiguration.Setup(env);
         }
     }
 }
