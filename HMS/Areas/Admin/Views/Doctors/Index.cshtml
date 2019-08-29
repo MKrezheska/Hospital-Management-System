@@ -4,79 +4,7 @@
 }
 
 
-<style>
-    .snip1515 {
-        font-family: 'Open Sans', Arial, sans-serif;
-        position: relative;
-        margin: 10px;
-        min-width: 230px;
-        max-width: 250px;
-        color: #000000;
-        text-align: center;
-        line-height: 1.4em;
-        font-size: 14px;
-        box-shadow: none !important;
-    }
-
-        .snip1515 * {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-
-        .snip1515 .profile-image {
-            display: inline-block;
-            width: 80%;
-            z-index: 1;
-            position: relative;
-            padding: 10px;
-            border: 2px solid #6CC3D5;
-        }
-
-            .snip1515 .profile-image img {
-                max-width: 100%;
-                vertical-align: top;
-            }
-
-        .snip1515 figcaption {
-            width: 100%;
-            background-color: #b9f0cd;
-            color: #555;
-            padding: 125px 25px 25px;
-            margin-top: -100px;
-            display: inline-block;
-        }
-
-        .snip1515 h3,
-        .snip1515 h4,
-        .snip1515 p {
-            margin: 0 0 5px;
-        }
-
-        .snip1515 h3 {
-            font-weight: 600;
-            font-size: 1.3em;
-            font-family: 'Playfair Display', Arial, sans-serif;
-        }
-
-        .snip1515 h4 {
-            color: #8c8c8c;
-            font-weight: 400;
-            letter-spacing: 2px;
-        }
-
-        .snip1515 p {
-            font-size: 0.9em;
-            letter-spacing: 1px;
-            opacity: 0.9;
-        }
-
-  
-
-       
-</style>
-
 <br /><br />
-
 
 
 <div class="row">
@@ -95,25 +23,55 @@
 
 </div>
 
-
-
 <br />
-<div class="row col-12"> 
+
+<div class="row">
 
 
-    @foreach (var item in Model)
+    @foreach (var doctor in Model)
     {
-        <figure class="snip1515">
-            <div class="profile-image"><img src="@item.Image" alt="sample47" /></div>
-            <figcaption>
-                <h3>@item.Name</h3>
-                <h4>@item.Specialties.Name</h4>
 
-                <partial name="_TableButtonPartial" model="item.Id" />
+        <div class="col-4">
 
-            </figcaption>
-        </figure>
+            <div class="card mb-4">
+
+                <div class="card-header">
+
+                    <h4 class="my-0 font-weight-normal">
+
+                        <label style="font-size:23px;color:steelblue;">@doctor.Name</label>
+
+                    </h4>
+
+                </div>
+
+
+
+                <img class="card-img-top" style="height:100%;" src="@doctor.Image" alt="Card Image" />
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div class="btn-group">
+
+                            <label style="font-size:20px; color:#a51313"><b>@doctor.PhoneNumber</b></label>
+
+                        </div>
+
+                        <partial name="_TableButtonPartial" model="doctor.Id" />
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
 
     }
 </div>
+
 

@@ -1,6 +1,76 @@
 ﻿@model HMS.Models.ViewModel.HomeViewModel;
 
+@{
+    ViewData["Title"] = "Index";
+}
 
+
+<style>
+    .snip1515 {
+        font-family: 'Open Sans', Arial, sans-serif;
+        position: relative;
+        margin: 10px;
+        min-width: 230px;
+        max-width: 250px;
+        color: #000000;
+        text-align: center;
+        line-height: 1.4em;
+        font-size: 14px;
+        box-shadow: none !important;
+    }
+
+        .snip1515 * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .snip1515 .profile-image {
+            display: inline-block;
+            width: 80%;
+            z-index: 1;
+            position: relative;
+            padding: 10px;
+            border: 2px solid #6CC3D5;
+        }
+
+            .snip1515 .profile-image img {
+                max-width: 100%;
+                vertical-align: top;
+            }
+
+        .snip1515 figcaption {
+            width: 100%;
+            background-color: #b9f0cd;
+            color: #555;
+            padding: 125px 25px 25px;
+            margin-top: -100px;
+            display: inline-block;
+        }
+
+        .snip1515 h3,
+        .snip1515 h4,
+        .snip1515 p {
+            margin: 0 0 5px;
+        }
+
+        .snip1515 h3 {
+            font-weight: 400;
+            font-size: 1.3em;
+            font-family: 'Playfair Display', Arial, sans-serif;
+            margin-bottom: 10px
+        }
+
+        .snip1515 h4 {
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .snip1515 p {
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+</style>
 
 <br /><br />
 
@@ -11,53 +81,30 @@
 @foreach (var s in Model.Specialties)
 {
     <h2 class="text-info">@s.Name</h2>
-    <div class="row">
+    <div class="row col-12">
 
 
         @foreach (var doctor in Model.Doctors)
         {
             if (doctor.SpecialityId == s.Id)
             {
-                <div class="col-4">
 
-                    <div class="card mb-4">
+                <figure class="snip1515">
+                    <div class="profile-image"><img src="@doctor.Image" alt="sample47" /></div>
+                    <figcaption>
+                        <h4>@doctor.Name</h4>
+                        <label style="margin-top: 8px; margin-bottom: 0px">Фокус: </label><h3 class="font-italic">@doctor.Focus</h3>
+                        
 
-                        <div class="card-header">
+                        <a asp-action="Details" asp-controller="Home" class="btn btn-success pull-right btn-outline-info" asp-route-id="@doctor.Id">Види профил</a>
 
-                            <h4 class="my-0 font-weight-normal">
-
-                                <label style="font-size:23px;color:steelblue;">@doctor.Name</label>
-
-                            </h4>
-
-                        </div>
-
-
-
-                        <img class="card-img-top" style="height:100%;" src="@doctor.Image" alt="Card Image" />
-
-                        <div class="card-body">
-
-                            <div class="d-flex justify-content-between align-items-center">
-
-                                <div class="btn-group">
-
-                                    <label style="font-size:20px; color:#a51313"><b>@doctor.PhoneNumber</b></label>
-
-                                </div>
-
-                                <a asp-action="Details" asp-controller="Home" class="btn btn-success pull-right btn-outline-info" asp-route-id="@doctor.Id">Види профил</a>
-
-                            </div>
-
-                        </div>
+                    </figcaption>
+                </figure>
 
 
 
-                    </div>
-
-                </div>
             }
+            <br />
         }
     </div>
 }
