@@ -36,6 +36,7 @@ namespace HMS.Controllers
                 SubSpecialties = _db.SubSpecialties.ToList(),
                 Doctors = new Models.Doctors()
             };
+            
 
         }
 

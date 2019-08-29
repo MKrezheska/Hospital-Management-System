@@ -1,4 +1,4 @@
-﻿@model List<HMS.Models.Doctors>
+﻿@model HMS.Models.ViewModel.HomeViewModel;
 
 
 
@@ -6,54 +6,59 @@
 
 
 
-<div class="row">
-
-    @foreach (var doctor in Model)
-
-    {
-
-        <div class="col-4">
-
-            <div class="card mb-4">
-
-                <div class="card-header">
-
-                    <h4 class="my-0 font-weight-normal">
-
-                        <label style="font-size:23px;color:steelblue;">@doctor.Name</label>
-
-                    </h4>
-
-                </div>
 
 
+@foreach (var s in Model.Specialties)
+{
+    <h2 class="text-info">@s.Name</h2>
+    <div class="row">
 
-                <img class="card-img-top" style="height:100%;" src="@doctor.Image" alt="Card Image" />
 
-                <div class="card-body">
+        @foreach (var doctor in Model.Doctors)
+        {
+            if (doctor.SpecialityId == s.Id)
+            {
+                <div class="col-4">
 
-                    <div class="d-flex justify-content-between align-items-center">
+                    <div class="card mb-4">
 
-                        <div class="btn-group">
+                        <div class="card-header">
 
-                            <label style="font-size:20px; color:#a51313"><b>$@doctor.PhoneNumber</b>/sq.ft</label>
+                            <h4 class="my-0 font-weight-normal">
+
+                                <label style="font-size:23px;color:steelblue;">@doctor.Name</label>
+
+                            </h4>
 
                         </div>
 
-                        <a asp-action="Details" asp-controller="Home" class="btn btn-success pull-right btn-outline-info" asp-route-id="@doctor.Id"> View Details</a>
+
+
+                        <img class="card-img-top" style="height:100%;" src="@doctor.Image" alt="Card Image" />
+
+                        <div class="card-body">
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div class="btn-group">
+
+                                    <label style="font-size:20px; color:#a51313"><b>@doctor.PhoneNumber</b></label>
+
+                                </div>
+
+                                <a asp-action="Details" asp-controller="Home" class="btn btn-success pull-right btn-outline-info" asp-route-id="@doctor.Id">Види профил</a>
+
+                            </div>
+
+                        </div>
+
+
 
                     </div>
 
                 </div>
+            }
+        }
+    </div>
+}
 
-
-
-            </div>
-
-        </div>
-
-
-
-    }
-
-</div>

@@ -8,6 +8,7 @@ using HMS.Models;
 using HMS.Data;
 using Microsoft.EntityFrameworkCore;
 using HMS.Extensions;
+using HMS.Models.ViewModel;
 
 namespace HMS.Controllers
 {
@@ -16,18 +17,34 @@ namespace HMS.Controllers
     {
 
         private readonly ApplicationDbContext _db;
-
+        [BindProperty]
+        public HomeViewModel Hvm { get; set; }
         public HomeController(ApplicationDbContext db)
         {
             _db = db;
+            Hvm = new HomeViewModel()
+            {
+                Doctors = _db.Doctors.ToList(),
+                Specialties = _db.Specialties.ToList(),
+            };
+
         }
 
         public async Task<IActionResult> Index()
         {
-            var productList = await _db.Doctors.Include(m => m.Specialties).Include(m => m.SubSpecialties).ToListAsync();
+            Hvm = new HomeViewModel()
+            {
+                Doctors = _db.Doctors.ToList(),
+                Specialties = _db.Specialties.ToList(),
+            };
 
-            return View(productList);
+
+            return View(Hvm);
+
+
         }
+
+       
 
         public async Task<IActionResult> Details(int id)
         {
