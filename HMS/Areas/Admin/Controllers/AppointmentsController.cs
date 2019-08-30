@@ -20,7 +20,7 @@ using NPOI.SS.Util;
 using NPOI.XSSF.UserModel;
 using NPOI.XWPF.UserModel;
 using Rotativa.AspNetCore;
-
+using NPOI.XWPF.UserModel;
 
 
 namespace HMS.Areas.Admin.Controllers
@@ -32,7 +32,7 @@ namespace HMS.Areas.Admin.Controllers
     {
 
         private readonly ApplicationDbContext _db;
-        private int PageSize = 3;
+        private int PageSize = 10;
 
         IConfiguration Configuration;
 
@@ -414,6 +414,18 @@ namespace HMS.Areas.Admin.Controllers
 
         public IActionResult AppointmentExcel()
         {
+
+            System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            AppointmentViewModel appointmentVM = new AppointmentViewModel()
+            {
+                Appointments = new List<Models.Appointments>()
+            };
+
+            appointmentVM.Appointments = _db.Appointments.Include(a => a.DoctorUser).ToList();
+
             var newFile = homePath + "\\Downloads\\" + "AppointmentExcel.xlsx";
 
             using (var fs = new FileStream(newFile, FileMode.Create, FileAccess.Write))
@@ -423,30 +435,58 @@ namespace HMS.Areas.Admin.Controllers
 
                 ISheet sheet1 = workbook.CreateSheet("Sheet1");
 
-                sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 0, 10));
-                var rowIndex = 0;
-                IRow row = sheet1.CreateRow(rowIndex);
-                row.Height = 30 * 80;
-                row.CreateCell(0).SetCellValue("this is content");
-                sheet1.AutoSizeColumn(0);
-                rowIndex++;
-
-                var sheet2 = workbook.CreateSheet("Sheet2");
                 var style1 = workbook.CreateCellStyle();
-                style1.FillForegroundColor = HSSFColor.Blue.Index2;
+                style1.FillForegroundColor = HSSFColor.LightGreen.Index;
                 style1.FillPattern = FillPattern.SolidForeground;
 
-                var style2 = workbook.CreateCellStyle();
-                style2.FillForegroundColor = HSSFColor.Yellow.Index2;
-                style2.FillPattern = FillPattern.SolidForeground;
 
-                var cell2 = sheet2.CreateRow(0).CreateCell(0);
-                cell2.CellStyle = style1;
-                cell2.SetCellValue(0);
+                for (int i = 0; i < appointmentVM.Appointments.Count; i++)
+                {
+                    if (appointmentVM.Appointments.ElementAt(i).DoctorUser is null)
+                    {
+                        appointmentVM.Appointments.RemoveAt(i);
+                    }
+                }
+                
+                for (int i = 0; i < appointmentVM.Appointments.Count; i++)
+                {
+                  
+                    if (i == 0)
+                    {
+                        sheet1.CreateRow(i);
+                        for (int j = 0; j < 6; j++)
+                        {
+                            sheet1.GetRow(i).CreateCell(j);
+                            sheet1.GetRow(i).GetCell(j).CellStyle = style1;
+                        }
 
-                cell2 = sheet2.CreateRow(1).CreateCell(0);
-                cell2.CellStyle = style2;
-                cell2.SetCellValue(1);
+                        sheet1.GetRow(i).GetCell(0).SetCellValue("Доктор");
+                        sheet1.GetRow(i).GetCell(1).SetCellValue("Термин датум");
+                        sheet1.GetRow(i).GetCell(2).SetCellValue("Пациент");
+                        sheet1.GetRow(i).GetCell(3).SetCellValue("Пациент тел.");
+                        sheet1.GetRow(i).GetCell(4).SetCellValue("Пациент емаил");
+                        sheet1.GetRow(i).GetCell(5).SetCellValue("Потврден");
+                       
+                    }
+
+                    sheet1.CreateRow(i + 1);
+
+                    sheet1.GetRow(i + 1).CreateCell(0);
+                    sheet1.GetRow(i + 1).CreateCell(1);
+                    sheet1.GetRow(i + 1).CreateCell(2);
+                    sheet1.GetRow(i + 1).CreateCell(3);
+                    sheet1.GetRow(i + 1).CreateCell(4);
+                    sheet1.GetRow(i + 1).CreateCell(5);
+
+
+                    sheet1.GetRow(i + 1).GetCell(0).SetCellValue(appointmentVM.Appointments.ElementAt(i).DoctorUser.Name);
+                    sheet1.GetRow(i + 1).GetCell(1).SetCellValue(appointmentVM.Appointments.ElementAt(i).AppointmentDate.ToString());
+                    sheet1.GetRow(i + 1).GetCell(2).SetCellValue(appointmentVM.Appointments.ElementAt(i).PatientName);
+                    sheet1.GetRow(i + 1).GetCell(3).SetCellValue(appointmentVM.Appointments.ElementAt(i).PatientPhoneNumber);
+                    sheet1.GetRow(i + 1).GetCell(4).SetCellValue(appointmentVM.Appointments.ElementAt(i).PatientEmail);
+                    sheet1.GetRow(i + 1).GetCell(5).SetCellValue(appointmentVM.Appointments.ElementAt(i).isConfirmed.ToString());
+
+                }
 
                 workbook.Write(fs);
             }
@@ -455,7 +495,7 @@ namespace HMS.Areas.Admin.Controllers
             return RedirectToAction("Index", "Appointments");
         }
 
-        public IActionResult AppointmentWord(int doctorPage = 1, string searchName = null, string searchEmail = null, string searchPhone = null, string searchDate = null)
+        public IActionResult AppointmentWord()
         {
 
             System.Security.Claims.ClaimsPrincipal currentUser = this.User;
@@ -468,80 +508,59 @@ namespace HMS.Areas.Admin.Controllers
             };
 
             appointmentVM.Appointments = _db.Appointments.Include(a => a.DoctorUser).ToList();
-            if (User.IsInRole(SD.AdminEndUser))
-            {
-                appointmentVM.Appointments = appointmentVM.Appointments.Where(a => a.DoctorId == claim.Value).ToList();
-            }
-
-            if (searchName != null)
-            {
-                appointmentVM.Appointments = appointmentVM.Appointments.Where(a => a.PatientName.ToLower().Contains(searchName.ToLower())).ToList();
-            }
-            if (searchEmail != null)
-            {
-                appointmentVM.Appointments = appointmentVM.Appointments.Where(a => a.PatientEmail.ToLower().Contains(searchEmail.ToLower())).ToList();
-            }
-            if (searchPhone != null)
-            {
-                appointmentVM.Appointments = appointmentVM.Appointments.Where(a => a.PatientPhoneNumber.ToLower().Contains(searchPhone.ToLower())).ToList();
-            }
-            if (searchDate != null)
-            {
-                try
-                {
-                    DateTime appDate = Convert.ToDateTime(searchDate);
-                    appointmentVM.Appointments = appointmentVM.Appointments.Where(a => a.AppointmentDate.ToShortDateString().Equals(appDate.ToShortDateString())).ToList();
-                }
-                catch (Exception ex)
-                {
-
-                }
-
-            }
-
-            var count = appointmentVM.Appointments.Count;
-
-            appointmentVM.Appointments = appointmentVM.Appointments.OrderBy(p => p.AppointmentDate)
-                .Skip((doctorPage - 1) * PageSize)
-                .Take(PageSize).ToList();
-
-
-
-
+          
             var newFile = homePath + "\\Downloads\\" + "AppointmentWord.docx";
             
-            using (var fs = new FileStream(newFile, FileMode.Create, FileAccess.Write))
+            XWPFDocument doc = new XWPFDocument();
+            XWPFParagraph para = doc.CreateParagraph();
+            XWPFRun r0 = para.CreateRun();
+
+            r0.SetText("Термини датум: " + DateTime.Now.ToString("MM/dd/yyyy HH:mm"));
+            r0.FontSize = 20;
+            r0.SetColor("5A5A5A");
+            para.Alignment = ParagraphAlignment.CENTER;
+
+            para.BorderTop = Borders.Thick;
+            para.FillBackgroundColor = "90EE90";
+            
+            for (int i = 0; i < appointmentVM.Appointments.Count; i++)
             {
-                XWPFDocument doc = new XWPFDocument();
-                var p0 = doc.CreateParagraph();
-                p0.Alignment = ParagraphAlignment.CENTER;
-                XWPFRun r0 = p0.CreateRun();
-                r0.FontFamily = "Arial";
-                r0.FontSize = 18;
-                r0.IsBold = true;
-                r0.SetText("Термини датум: " + DateTime.Now.ToString("MM/dd/yyyy HH:mm"));
-
-                var p1 = doc.CreateParagraph();
-                p1.Alignment = ParagraphAlignment.LEFT;
-                p1.IndentationFirstLine = 500;
-                XWPFRun r1 = p1.CreateRun();
-                r1.FontFamily = "Arial";
-                r1.FontSize = 12;
-                r1.IsBold = true;
-
-                StringBuilder stringBuilder = new StringBuilder();
-
-
-                foreach (Appointments appointment in appointmentVM.Appointments) {
-                    stringBuilder.Append(appointment.DoctorUser.Name);
-                    stringBuilder.AppendLine();
+                if (appointmentVM.Appointments.ElementAt(i).DoctorUser is null)
+                {
+                    appointmentVM.Appointments.RemoveAt(i);
                 }
-                r1.SetText(stringBuilder.ToString());
-                r1.AppendText("^l");
-                r1.AppendText("Dimtiar Mielski");
-                doc.Write(fs);
             }
 
+            XWPFTable table = doc.CreateTable(appointmentVM.Appointments.Count + 1, 6);
+
+            for (int i = 0; i < appointmentVM.Appointments.Count; i++)
+                {
+                if (i == 0) {
+
+                    for (int j = 0; j < 6; j++)
+                    {
+                        table.GetRow(i).GetCell(j).SetColor("6CC3D5");
+                    }
+
+                    table.GetRow(i).GetCell(0).SetText("Доктор");
+                    table.GetRow(i).GetCell(1).SetText("Термин датум");
+                    table.GetRow(i).GetCell(2).SetText("Пациент");
+                    table.GetRow(i).GetCell(3).SetText("Пациент тел.");
+                    table.GetRow(i).GetCell(4).SetText("Пациент емаил");
+                    table.GetRow(i).GetCell(5).SetText("Потврден");
+                }
+                    table.GetRow(i + 1).GetCell(0).SetText(appointmentVM.Appointments.ElementAt(i).DoctorUser.Name);
+                    table.GetRow(i + 1).GetCell(1).SetText(appointmentVM.Appointments.ElementAt(i).AppointmentDate.ToString());
+                    table.GetRow(i + 1).GetCell(2).SetText(appointmentVM.Appointments.ElementAt(i).PatientName);
+                    table.GetRow(i + 1).GetCell(3).SetText(appointmentVM.Appointments.ElementAt(i).PatientPhoneNumber);
+                    table.GetRow(i + 1).GetCell(4).SetText(appointmentVM.Appointments.ElementAt(i).PatientEmail);
+                    table.GetRow(i + 1).GetCell(5).SetText(appointmentVM.Appointments.ElementAt(i).isConfirmed.ToString());
+            
+                }
+
+                FileStream out1 = new FileStream(newFile, FileMode.Create);
+                doc.Write(out1);
+        
             return RedirectToAction("Index", "Appointments");
         }
     }
