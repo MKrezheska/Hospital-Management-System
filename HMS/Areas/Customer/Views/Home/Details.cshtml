@@ -75,7 +75,7 @@
                     }
                     else
                     {
-                    <button type="submit" value="Add to Bag" asp-route-id="@Model.Id" class="btn btn-primary form-control">Add To Bag</button>
+                    <button type="submit" value="Add to Bag" asp-route-id="@Model.Id" class="btn btn-primary form-control">Закажи термин</button>
                     }
                 </div>
             </div>
@@ -88,8 +88,12 @@
             <br /><br />
             @if(Model.Available)
             {
-                <img src="~/images/inStock.png" width="50%"/>
+                <img src="~/images/available.png" width="50"/>
 
+            }
+            else
+            {
+                <img src="~/images/not available.png" width="50" />
             }
         </div>
 
