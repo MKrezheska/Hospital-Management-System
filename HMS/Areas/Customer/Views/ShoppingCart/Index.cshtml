@@ -65,7 +65,7 @@
                             <label>Име : </label>
                         </div>
                         <div class="col-12" style="padding-bottom:15px">
-                            <input asp-for="@Model.Appointments.PatientName" class="form-control" />
+                            <input asp-for="@Model.Appointments.PatientName" id="PatientName" name="PatientName" class="form-control" />
                         </div>
                         <div class="col-12">
                             <label>Телефон : </label>
@@ -77,19 +77,19 @@
                             <label>Емаил  : </label>
                         </div>
                         <div class="col-12" style="padding-bottom:15px">
-                            <input asp-for="@Model.Appointments.PatientEmail" class="form-control" />
+                            <input asp-for="@Model.Appointments.PatientEmail" id="PatientEmail" name="PatientEmail" class="form-control" />
                         </div>
                         <div class="col-12">
                             <label>Датум на термин : </label>
                         </div>
                         <div class="col-12" style="padding-bottom:15px">
-                            <input asp-for="@Model.Appointments.AppointmentDate" value="" type="text" id="datepicker" class="form-control" />
+                            <input asp-for="@Model.Appointments.AppointmentDate" value="" type="text" id="datepicker" name="datepicker" class="form-control" />
                         </div>
                         <div class="col-12">
                             <label>Време на термин : </label>
                         </div>
                         <div class="col-12" style="padding-bottom:15px">
-                            <input asp-for="@Model.Appointments.AppointmentTime" value="" type="text" class="timepicker form-control" />
+                            <input asp-for="@Model.Appointments.AppointmentTime"  id="AppointmentTime" name="AppointmentTime" value="" type="text" class="timepicker form-control" />
                         </div>
                         <div class="col-12">
                             <button type="submit" id="btnPlaceOrder" class="btn btn-success">Закажи термин</button>
