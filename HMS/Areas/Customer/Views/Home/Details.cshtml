@@ -20,7 +20,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Focus"></label>
+                    <label>Фокус</label>
                 </div>
                 <div class="col-8">
                     <input asp-for="Focus" class="form-control" readonly />
@@ -70,12 +70,17 @@
 
                     @if (isInBag)
                     {
-                        <button type="submit" value="Remove From Bag" asp-action="remove" asp-route-id="@Model.Id" class="btn btn-danger form-control">Remove From Bag</button>
+                        <button type="submit" value="Remove From Bag" asp-action="remove" asp-route-id="@Model.Id" class="btn btn-danger form-control">Откажи термин</button>
 
                     }
                     else
                     {
-                    <button type="submit" value="Add to Bag" asp-route-id="@Model.Id" class="btn btn-primary form-control">Add To Bag</button>
+                        //added if
+                        if (Model.Available == true)
+                        {
+                            <button type="submit" value="Add to Bag" asp-route-id="@Model.Id" class="btn btn-primary form-control">Закажи термин</button>
+
+                        }
                     }
                 </div>
             </div>
@@ -86,11 +91,7 @@
         <div class="col-3">
             <img src="@Model.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
             <br /><br />
-            @if(Model.Available)
-            {
-                <img src="~/images/inStock.png" width="50%"/>
-
-            }
+           
         </div>
 
 
