@@ -6574,7 +6574,7 @@ a.close.disabled {
     line-break: auto;
     font-size: 0.875rem;
     word-wrap: break-word;
-    opacity: 0;
+    
 }
 
     .tooltip.show {
@@ -11163,7 +11163,7 @@ a.text-success:hover, a.text-success:focus {
     color: #31a476 !important;
 }
 
-.text-info {
+.text-infSo {
     color: #6CC3D5 !important;
 }
 
@@ -11602,5 +11602,7 @@ legend {
 #cookieConsent > div {
     display: none;
 }
+
+
 
 

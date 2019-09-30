@@ -13,31 +13,35 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/jquery-ui.css" />
         <link rel="stylesheet" href="~/css/jquery.timepicker.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/jquery-ui.css" />
         <link rel="stylesheet" href="~/css/jquery.timepicker.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <article id="container">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!--<i class="fas fa-user-md navbar-brand"></i>-->
-        <a asp-area="Customer" asp-controller="Home" asp-action="Index"><img src="~/images/HMSM -logo.png" class="img-responsive mr-4" width="90" height="90" /></a>
-
-
-
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
+        <header id="main-nav">
+            <a asp-area="Customer" asp-controller="Home" asp-action="Index"><img src="~/images/HMSM -logo.png" class="img-responsive mr-4 logo" width="90" height="90" /></a>
+            
+            <div id="bun"><div class="mmm-burger"></div></div>
+        </header>
+        
+    </article>
+    <br /> <br />
+    <aside id='sidebar'>
+        <nav id='mobile-nav'>
+            <a asp-area="Customer" asp-controller="Home" asp-action="Index"><img src="~/images/HMSM -logo.png" class="img-responsive mr-4 mobile-logo" width="90" height="90" /></a>
+            <br />
+            <ul>
                 <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Почетна</a></li>
 
                 @if (User.IsInRole(SD.SuperAdminEndUser))
@@ -52,12 +56,11 @@
                     <li class="nav-item"><a class="nav-link" asp-area="Admin" asp-controller="Appointments" asp-action="Index">Термини</a></li>
 
                 }
-
                 @if (HttpContextAccessor.HttpContext.Session.Get<List<int>>("ssShoppingCart") != null)
                 {
-                    <li style="color:white">
+                    <li class="nav-item">
                         <a asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index" class="nav-link">
-                            <i class="fas fa-notes-medical"></i>
+                            <i class="fas fa-notes-medical "></i>
                             @{
                                 var count = HttpContextAccessor.HttpContext.Session.Get<List<int>>("ssShoppingCart").Count;
                             }
@@ -69,7 +72,7 @@
                 }
                 else
                 {
-                    <li style="color:white">
+                    <li style="color:white" class="nav-item">
                         <a asp-area="Customer" asp-controller="ShoppingCart" asp-action="Index" class="nav-link">
                             <i class="fas fa-notes-medical"></i>
 
@@ -79,17 +82,12 @@
                     </li>
 
                 }
+                <partial name="_LoginPartial" />
             </ul>
-        </div>
-        <div>
-            <partial name="_LoginPartial" />
-        </div>
-    </nav>
 
-
-
-
-
+            
+        </nav>
+    </aside>
 
     <partial name="_CookieConsentPartial" />
 
@@ -146,160 +144,12 @@
             </div>
         </div>
 
-        
-        
+
+
 
     </footer>
 
-    <style>
-    
-
-    .footer #button{
-	width:35px;
-	height:35px;
-	border: #b9f0cd 12px solid;
-	border-radius:35px;
-	margin:0 auto;
-	position:relative;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-    }
-    .footer #button:hover {
-            width: 35px;
-            height: 35px;
-            border: #b9f0cd 12px solid;
-            -webkit-transition: all 1s ease;
-            -moz-transition: all 1s ease;
-            -o-transition: all 1s ease;
-            -ms-transition: all 1s ease;
-            transition: all 1s ease;
-            position: relative;
-    }
-    .footer {
-	bottom:0;
-	left:0;
-	position:fixed;
-    width: 100%;
-    height: 2em;
-    overflow:hidden;
-    margin:0 auto;
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	z-index:999;
-    }
-    .footer:hover {
-	-webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-	height: 10em;
-    }
-    .footer #container {
-            margin-top: 5px;
-            width: 100%;
-            height: 100%;
-            position: relative;
-            top: 0;
-            left: 0;
-            background: #b9f0cd;
-        }
-        /*.footer #cont {
-            position: relative;
-            top: -45px;
-            right: 190px;
-            width: 150px;
-            height: auto;
-            margin: 0 auto;
-        }*/
-    #cont .wrapper {
-            padding: 5px;
-            max-width: 960px;
-            width: 95%;
-            margin: 0px auto;
-    }
    
-    header {
-            padding: 0 15px;
-    }
-
-        .columns {
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            margin: 5px 0;
-        }
-
-        .column {
-            flex: 1;
-            margin: 2px;
-            padding: 10px;
-            padding-left: 70px;
-            padding-bottom: 5px;
-        }
-         .columns .column:first-child
-
-        {
-            margin-left: 0;
-
-
-        }
-
-            .columns .column:last-child{
-            margin-right: 0;
-        }
-
-
-        media screen and (max-width: 980px) {
-            .columns .column
-
-        {
-            margin-bottom: 5px;
-            flex-basis: 40%;
-            &:nth-last-child(2)
-
-        {
-            margin-right: 0;
-        }
-
-        &:last-child {
-            flex-basis: 100%;
-            margin: 0;
-        }
-
-        }
-        }
-
-        media screen and (max-width: 680px) {
-            .columns .column
-
-        {
-            flex-basis: 100%;
-            margin: 0 0 5px 0;
-        }
-        }
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-        ::-webkit-scrollbar-thumb:hover{
-            background-color: #d7dfd9;
-        }
-        ::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            border-radius: 10px;
-            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-        }
-    </style>
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -318,3 +168,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
