@@ -3,6 +3,292 @@
     ViewData["Title"] = "Index";
 }
 
+
+<style>
+
+
+    html {
+        overflow-y: scroll;
+    }
+
+    figure.snip1471 {
+        font-family: 'Raleway', Arial, sans-serif;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+        min-width: 230px;
+        max-width: 315px;
+        max-height: 230px;
+        width: 100%;
+        background: #000000;
+        color: #ffffff;
+    }
+
+        figure.snip1471 * {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all 0.6s ease;
+            transition: all 0.6s ease;
+        }
+
+        figure.snip1471 img {
+            opacity: 0.8;
+            width: 100%;
+            -webkit-transition: opacity 0.35s;
+            transition: opacity 0.35s;
+        }
+
+        figure.snip1471 figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+            figure.snip1471 figcaption > div {
+                height: 50%;
+                overflow: hidden;
+                width: 100%;
+                position: relative;
+            }
+
+        figure.snip1471 h2,
+        figure.snip1471 h3,
+        figure.snip1471 .icons {
+            margin: 0;
+            position: absolute;
+            right: 0;
+            padding: 0 30px;
+            text-transform: uppercase;
+            font-size: 1em;
+            color: gainsboro;
+            white-space: nowrap;
+        }
+
+        figure.snip1471 h2 {
+            font-weight: 900;
+            bottom: 0;
+        }
+
+        figure.snip1471 h3 {
+            font-size: 1em;
+            top: 0;
+            font-weight: 500;
+        }
+
+        figure.snip1471 .icons {
+            opacity: 0;
+            -webkit-transform: translateY(-150%);
+            transform: translateY(-150%);
+        }
+
+            figure.snip1471 .icons a {
+                color: #ffffff;
+                text-decoration: none;
+                padding: 5px;
+                font-size: 1.6em;
+                opacity: 0.6;
+            }
+
+                figure.snip1471 .icons a:hover {
+                    opacity: 1;
+                    cursor: pointer;
+                }
+
+        figure.snip1471:hover img,
+        figure.snip1471.hover img {
+            opacity: 0.3;
+            -webkit-filter: grayscale(100%);
+            filter: grayscale(100%);
+        }
+
+        figure.snip1471:hover figcaption h3,
+        figure.snip1471.hover figcaption h3 {
+            -webkit-transform: translateY(-150%);
+            transform: translateY(-150%);
+            opacity: 0;
+        }
+
+        figure.snip1471:hover figcaption .icons,
+        figure.snip1471.hover figcaption .icons {
+            opacity: 1;
+            -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+        }
+
+    .text-info {
+        color: #28bea8;
+    }
+
+
+    ul.filters {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 30px 0;
+    }
+
+        ul.filters > li {
+            list-style: none;
+            display: inline-block;
+        }
+
+            ul.filters > li > a {
+                text-decoration: none;
+            }
+
+
+    .snip1489 {
+        position: relative;
+        font-size: 13px;
+        color: #e6e6e6;
+        width: 35px;
+        margin: 1px;
+        height: 35px;
+        line-height: 35px;
+        display: inline-block;
+        text-align: center;
+        -webkit-perspective: 50em;
+        perspective: 50em;
+        text-decoration: none;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+        .snip1489:after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border: 2px solid #e6e6e6;
+            content: '';
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .snip1489:before {
+            color: #fff;
+        }
+
+        .snip1489:before,
+        .snip1489:after {
+            -webkit-transition: all 0.45s ease-in-out;
+            transition: all 0.45s ease-in-out;
+        }
+
+        .snip1489:hover,
+        .snip1489:active,
+        .snip1489.hover {
+            color: #c0392b;
+        }
+
+            .snip1489:hover:after,
+            .snip1489:active:after,
+            .snip1489.hover:after {
+                border-color: transparent #28bea8;
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+
+
+    ul.filters > li.active::after {
+        -webkit-transition: all 0.45s ease-in-out;
+        transition: all 0.45s ease-in-out;
+        border-color: transparent #28bea8;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+
+
+
+    .snip1160 {
+        position: relative;
+        font-size: 25px;
+        color: #ffffff;
+        width: 50px;
+        margin: 20;
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;    
+        background-color: #acdcd5;
+    }
+
+        .snip1160 * {
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        .snip1160:before,
+        .snip1160:after {
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .snip1160:before {
+            color: #000000;
+        }
+
+        .snip1160:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border: 1px solid #000000;
+            content: '';
+            z-index: -1;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+
+
+
+        .snip1160.green:before {
+            color: #78c2ad;
+            text-decoration: none;
+        }
+
+        .snip1160.green:after {
+            border-color: #78c2ad;
+        }
+
+
+
+        .snip1160:hover,
+        .snip1160 .hover {
+            text-decoration: none;
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+        }
+
+            .snip1160:hover:after,
+            .snip1160 .hover:after {
+                text-decoration: none;
+                opacity: 0.5;
+                border-width: 8px;
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+
+
+
+
+
+    
+
+
+
+
+
+</style>
 <br /><br />
 
 <div class="row">
@@ -10,33 +296,161 @@
         <h2 class="text-info">Листа на субспецијалности</h2>
     </div>
     <div class="col-6 text-right">
-        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Нова субспецијалност</a>
+      
+        <a asp-action="Create" class="snip1160 green fas fa-plus " data-toggle="tooltip" data-placement="left" title="Додади нова субспецијалност"></a>
+
     </div>
 </div>
 
-<br />
-<div>
-    <table class="table table-striped border">
-        <tr class="table-info">
-            <th>
-                @Html.DisplayNameFor(m=>m.Name)
-            </th>
-            <th></th>
-            <th></th>
-        </tr>
+<ul class="filters text-center">
+    <li class="active snip1489 ion-ios-star-outline" data-filter="*"><a href="#!">Сите</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".а"><a href="#!">А</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".б"><a href="#!">Б</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".в"><a href="#!">В</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".г"><a href="#!">Г</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".д"><a href="#!">Д</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ѓ"><a href="#!">Ѓ</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".е"><a href="#!">Е</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ж"><a href="#!">Ж</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".з"><a href="#!">З</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ѕ"><a href="#!">Ѕ</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".и"><a href="#!">И</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ј"><a href="#!">Ј</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".к"><a href="#!">К</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".л"><a href="#!">Л</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".љ"><a href="#!">Љ</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".м"><a href="#!">М</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".н"><a href="#!">Н</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".њ"><a href="#!">Њ</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".о"><a href="#!">О</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".п"><a href="#!">П</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".р"><a href="#!">Р</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".с"><a href="#!">С</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".т"><a href="#!">Т</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ќ"><a href="#!">Ќ</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".у"><a href="#!">У</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ф"><a href="#!">Ф</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".х"><a href="#!">Х</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ц"><a href="#!">Ц</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ч"><a href="#!">Ч</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".џ"><a href="#!">Џ</a></li>
+    <li class="snip1489 ion-ios-star-outline" data-filter=".ш"><a href="#!">Ш</a></li>
 
-        @foreach(var item in Model)
+</ul>
+
+<br />
+<div class="projects">
+
+    <div class="row">
+        @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(m=>item.Name)
-                </td>
-                <td>
-                    <partial name="_TableButtonPartial" model="item.Id" />
-                </td>
+                <div class="col-lg-4 item  @item.Name.ElementAt(0).ToString().ToLower()" id="@item.Id">
+
+                    <figure class="snip1471">
+                        <img src="https://t4.ftcdn.net/jpg/02/27/27/63/240_F_227276335_r9OVLrbSfSGKKSMRRJ3oZV4syiucnfrU.jpg" alt="sample88" width="280px" height="186px" />
+                        <figcaption>
+                            <div id="inner">
+                                <h2>@item.Name</h2>
+                            </div>
+                            <div>
+
+                                <td style="width:150px">
+                                    <div class="btn-group icons" role="group">
+                                        <button class="btn btn-outline-primary" onclick="location.href='@Url.Action("Edit/"+item.Id)';return false;">
+                                            <i class="far fa-edit"></i>
+                                        </button>
+                                        <button class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete/"+item.Id)';return false;">
+                                                <i class="fas fa-trash"></i>
+
+                                            </button>
+
+                                   
+                                    </div>
+                                </td>
+
+                            </div>
+                        </figcaption>
+                        <a href="#"></a>
+                    </figure>
+                </div>
+
             </tr>
 
         }
-    </table>
+
+    </div>
+
+
+
 </div>
 
+
+
+
+
+@section Scripts{
+
+
+
+    <script src="~/js/isotope.pkgd.js" type="text/javascript"></script>
+
+   
+    <script>
+        $(".hover").mouseleave(
+            function () {
+                $(this).removeClass("hover");
+            }
+        );
+
+
+        (function () {
+
+            'use strict';
+
+
+            var $projects = $('.projects');
+
+            $projects.isotope({
+                itemSelector: '.item',
+                layoutMode: 'fitRows'
+            });
+
+            $('ul.filters > li').on('click', function (e) {
+
+                e.preventDefault();
+
+                var filter = $(this).attr('data-filter');
+
+                $('ul.filters > li').removeClass('active');
+                $(this).addClass('active');
+
+                $projects.isotope({ filter: filter });
+
+            });
+
+            $('.card').mouseenter(function () {
+
+                $(this).find('.card-overlay').css({ 'top': '-100%' });
+                $(this).find('.card-hover').css({ 'top': '0' });
+
+            }).mouseleave(function () {
+
+                $(this).find('.card-overlay').css({ 'top': '0' });
+                $(this).find('.card-hover').css({ 'top': '100%' });
+
+            });
+
+        })(jQuery);
+
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+
+       
+
+
+
+    </script>
+}
