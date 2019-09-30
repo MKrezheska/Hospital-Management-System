@@ -5,67 +5,243 @@
 
 <br /><br />
 
+<style>
+    .snip1519 {
+        font-family: 'Roboto', Arial, sans-serif;
+        position: relative;
+        overflow: hidden;
+        margin: 10px;
+        min-width: 250px;
+        max-width: 250px;
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: 5px;
+        border-top: 5px solid #78C2AD;
+        color: #9e9e9e;
+        text-align: center;
+        font-size: 16px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    }
+
+        .snip1519 *,
+        .snip1519 *:before {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-transition: all 0.1s ease-out;
+            transition: all 0.1s ease-out;
+        }
+
+        .snip1519 figcaption {
+            padding: 12% 10% 14%;
+        }
+
+    body > footer > div:nth-child(6) > figure > figcaption > i {
+        font-size: 54px;
+        color: #fff;
+        width: 80px;
+        line-height: 80px;
+        background-color: #6CC3D5;
+        border-radius: 50%;
+        padding: 0;
+        margin: 0 0 10px;
+        text-align: center;
+        display: inline-block;
+    }
+
+        .snip1519 h3 {
+            color: #3c3c3c;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 24px;
+            margin: 10px 0;
+        }
+
+    .snip1519 p {
+        font-size: 0.9em;
+        font-weight: 300;
+        margin: 0;
+    }
+
+        .snip1519 .button {
+            text-decoration: none;
+            color: #777;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 5px 10px;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+    
+    .snip1519 .button:before {
+        background-color: #d2652d;
+        position: absolute;
+        top: 100%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: '';
+        z-index: -1;
+        opacity: 0;
+    }
+
+            .snip1519 .button:hover {
+                color: #fff;
+            }
+
+                .snip1519 .button:hover:before {
+                    top: 0;
+                    opacity: 1;
+                }
+    figcaption > button.btn.btn-outline-danger, figcaption > button.btn.btn-outline-primary{
+        margin-top: 20px;
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 230px;
+            background-color: cadetblue;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0 0;
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            margin-left: -115px;
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 20px;
+            opacity: 0.7;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+
+
+    .snip1160 {
+        position: relative;
+        font-size: 25px;
+        color: #ffffff;
+        width: 50px;
+        margin: 5px;
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        /*background-color:cadetblue;*/
+        background-color: #acdcd5;
+    }
+
+        .snip1160 * {
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        .snip1160:before,
+        .snip1160:after {
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .snip1160:before {
+            color: #000000;
+        }
+
+        .snip1160:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border: 1px solid #000000;
+            content: '';
+            z-index: -1;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+
+
+
+        .snip1160.green:before {
+            color: #78c2ad;
+            text-decoration: none;
+        }
+
+        .snip1160.green:after {
+            border-color: #78c2ad;
+        }
+
+
+
+        .snip1160:hover,
+        .snip1160 .hover {
+            text-decoration: none;
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+        }
+
+            .snip1160:hover:after,
+            .snip1160 .hover:after {
+                text-decoration: none;
+                opacity: 0.5;
+                border-width: 8px;
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+</style>
+
+
 <div class="row">
     <div class="col-6">
         <h2 class="text-info"> Листа на администратори</h2>
     </div>
-    <div class="col-6 text-right">
-        <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Нов администратори</a>
+    
+    <div class="col text-right">
+
+        <a asp-area="Identity" asp-page="/Account/Register" class="snip1160 green fas fa-plus tooltip" style="opacity: 1;"><span class="tooltiptext">Додај администратор</span>@*<i class="fas fa-plus"></i>*@</a>
     </div>
 </div>
 
 <br />
-<div>
-    <table class="table table-striped border">
-        <tr class="table-info">
-            <th>
-                @Html.DisplayNameFor(m => m.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(m => m.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(m => m.PhoneNumber)
-            </th>
-            <th>
-                Disabled
-            </th>
-            <th></th>
-        </tr>
+<div class="row">
 
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(m => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(m => item.PhoneNumber)
-            </td>
-            <td>
-                @if(item.LockoutEnd!=null && item.LockoutEnd>DateTime.Now)
+        <figure class="snip1519 col">
+            <figcaption>
+                <i class="fas fa-user-md"></i>
+                <h3>@Html.DisplayFor(m => item.Name)</h3>
+                <p>E-mail: @Html.DisplayFor(m => item.Email)</p>
+                <p>Тел. број: @Html.DisplayFor(m => item.PhoneNumber)</p>
+                @if (item.LockoutEnd != null && item.LockoutEnd > DateTime.Now)
                 {
                     <label>Disabled</label>
                 }
-            </td>
-            <td>
                 @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
                 {
-                    <a type = "button" class="btn btn-primary" href="@Url.Action("Edit/" + item.Id)">
-                    <i class="fas fa-edit"></i>
-                    </a>
-                    <a type="button" class="btn btn-danger" href="@Url.Action("Delete/"+item.Id)">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
+                    <button class="btn btn-outline-primary" onclick="location.href='@Url.Action("Edit/"+item.Id)';return false;">
+                        <i class="far fa-edit"></i>
+                    </button>
+                    <button class="btn btn-outline-danger" onclick="location.href='@Url.Action("Delete/"+item.Id)';return false;">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 }
-            </td>
-           
-        </tr>
+            </figcaption>
+        </figure>
 
         }
-    </table>
+    
 </div>
+
 

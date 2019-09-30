@@ -74,38 +74,39 @@
 
 <br /><br />
 
+      <main>
+          <article class="content">
+
+              @foreach (var s in Model.Specialties)
+              {
+                  <h2 class="text-info">@s.Name</h2>
+                  <div class="row col-12">
+
+
+                      @foreach (var doctor in Model.Doctors)
+                      {
+                          if (doctor.SpecialityId == s.Id)
+                          {
+
+                              <figure class="snip1515">
+                                  <div class="profile-image"><img src="@doctor.Image" alt="sample47" /></div>
+                                  <figcaption>
+                                      <h4>@doctor.Name</h4>
+                                      <label style="margin-top: 8px; margin-bottom: 0px">Фокус: </label><h3 class="font-italic">@doctor.Focus</h3>
+
+
+                                      <a asp-action="Details" asp-controller="Home" class="btn btn-success pull-right btn-outline-info" asp-route-id="@doctor.Id">Види профил</a>
+
+                                  </figcaption>
+                              </figure>
 
 
 
+                          }
+                          <br />
+                      }
+                  </div>
+              }
 
-@foreach (var s in Model.Specialties)
-{
-    <h2 class="text-info">@s.Name</h2>
-    <div class="row col-12">
-
-
-        @foreach (var doctor in Model.Doctors)
-        {
-            if (doctor.SpecialityId == s.Id)
-            {
-
-                <figure class="snip1515">
-                    <div class="profile-image"><img src="@doctor.Image" alt="sample47" /></div>
-                    <figcaption>
-                        <h4>@doctor.Name</h4>
-                        <label style="margin-top: 8px; margin-bottom: 0px">Фокус: </label><h3 class="font-italic">@doctor.Focus</h3>
-                        
-
-                        <a asp-action="Details" asp-controller="Home" class="btn btn-success pull-right btn-outline-info" asp-route-id="@doctor.Id">Види профил</a>
-
-                    </figcaption>
-                </figure>
-
-
-
-            }
-            <br />
-        }
-    </div>
-}
-
+          </article>
+      </main>

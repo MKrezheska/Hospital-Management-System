@@ -1,9 +1,40 @@
 ﻿@model HMS.Models.ViewModel.DoctorsViewModel
 @using HMS.Extensions
 
+<style>
+    .modal-info .modal-header, .modal-info .modal-footer {
+        border-color: #FF7851;
+        color: white;
+    }
 
-<br />
-<h2 class="text-info">Избриши доктор</h2>
+    .modal-footer {
+        padding: 15px;
+        text-align: right;
+        color: white;
+        border-top: 1px solid #78C2AD;
+    }
+    .bg-aqua-active, .modal-info .modal-header, .modal-info .modal-footer{
+        background-color: darksalmon !important;
+        
+    
+    }
+    .modal-info .modal-body {
+        background-color: #FF7851 !important;
+        color: white;
+        border: 1px solid gray;
+    }
+    #delete > div > div > div.modal-footer.form-group{
+        margin-bottom: 0px;
+    }
+    #myModalLabel{
+        color: white;
+        text-align: center;
+    }
+
+</style>
+
+<br /><br />
+<h2 class="text-info">Избриши доктор</h2><br />
 <form method="post">
     <div class="p-4 border rounded row">
         <input hidden asp-for="Doctors.Id" />
@@ -43,7 +74,7 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Doctors.Focus"></label>
+                    <label>Фокус</label>
                 </div>
                 <div class="col-8">
                     <input asp-for="Doctors.Focus" readonly class="form-control" />
@@ -51,10 +82,17 @@
             </div>
             <div class="form-group row">
                 <div class="col-4">
-                    <label asp-for="Doctors.Available"></label>
+                    <label>Прима пациенти</label>
                 </div>
                 <div class="col-8">
-                    <input type="checkbox" readonly class="form-control" asp-for="Doctors.Available" />
+                    @if (Model.Doctors.Available == true)
+                    {
+                        <i class="fas fa-check"></i>
+                    }
+                    else
+                    {
+                        <i class="fas fa-times"></i>
+                    }
                 </div>
             </div>
         </div>
@@ -68,10 +106,10 @@
 
         <br />
         <div class="form-group">
-            <input type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete" value="Избриши">
+            <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" value="Избриши">
             <a asp-action="Index" class="btn btn-success">Назад кон листа</a>
         </div>
-        <div class="modal modal-danger fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal modal-info fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -88,8 +126,8 @@
 
                     </div>
                     <div class="modal-footer form-group">
-                        <input type="submit" class="btn btn-danger" value="Избриши" />
-                        <a asp-action="Index" class="btn btn-success">Назад кон листа</a>
+                        <input type="submit" class="btn btn-danger" value="Да" />
+                        <a asp-action="Index" class="btn btn-danger">Не</a>
                     </div>
 
                 </div>

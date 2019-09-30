@@ -3,12 +3,12 @@
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
 <ul class="list-group">
-    <li class="list-group-item"><a asp-page="./Index">Profile</a></li>
-    <li class="list-group-item"><a id="change-password" asp-page="./ChangePassword">Password</a></li>
+    <li class="list-group-item"><a asp-page="./Index">Профил</a></li>
+    <li class="list-group-item"><a id="change-password" asp-page="./ChangePassword">Лозинка</a></li>
     @if (hasExternalLogins)
     {
         <li class="list-group-item"><a id="external-login" asp-page="./ExternalLogins">External logins</a></li>
     }
     <li class="list-group-item"><a asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
-    <li class="list-group-item"><a asp-page="./PersonalData">Personal data</a></li>
+    <li class="list-group-item"><a asp-page="./PersonalData">Лични податоци</a></li>
 </ul>

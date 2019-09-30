@@ -2,6 +2,111 @@
 @{
     ViewData["Title"] = "Index";
 }
+<style>
+    .snip1160 {
+        position: relative;
+        font-size: 25px;
+        color: #ffffff;
+        width: 50px;
+        margin: 5px;
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        /*background-color:cadetblue;*/
+        background-color: #acdcd5;
+    }
+
+        .snip1160 * {
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+        .snip1160:before,
+        .snip1160:after {
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .snip1160:before {
+            color: #000000;
+        }
+
+        .snip1160:after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border: 1px solid #000000;
+            content: '';
+            z-index: -1;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+
+
+
+        .snip1160.green:before {
+            color: #78c2ad;
+            text-decoration: none;
+        }
+
+        .snip1160.green:after {
+            border-color: #78c2ad;
+        }
+
+
+
+        .snip1160:hover,
+        .snip1160 .hover {
+            text-decoration: none;
+            -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+        }
+
+            .snip1160:hover:after,
+            .snip1160 .hover:after {
+                text-decoration: none;
+                opacity: 0.5;
+                border-width: 8px;
+                -webkit-transform: scale(1.2);
+                transform: scale(1.2);
+            }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 230px;
+            background-color: cadetblue;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0 0;
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            margin-left: -115px;
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 20px;
+            opacity: 0.7;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+</style>
+
+
 
 <br /><br />
 
@@ -9,8 +114,9 @@
     <div class="col-6">
         <h2 class="text-info">Листа на специјалности</h2>
     </div>
-    <div class="col-6 text-right">
-        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Нова специјалност</a>
+    <div class="col text-right">
+
+        <a asp-action="Create" class="snip1160 green fas fa-plus tooltip" style="opacity: 1;"><span class="tooltiptext">Нова специјалност</span>@*<i class="fas fa-plus"></i>*@</a>
     </div>
 </div>
 
@@ -19,17 +125,17 @@
     <table class="table table-striped border">
         <tr class="table-info">
             <th>
-                @Html.DisplayNameFor(m=>m.Name)
+                @Html.DisplayNameFor(m => m.Name)
             </th>
             <th></th>
             <th></th>
         </tr>
 
-        @foreach(var item in Model)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(m=>item.Name)
+                    @Html.DisplayFor(m => item.Name)
                 </td>
                 <td>
                     <partial name="_TableButtonPartial" model="item.Id" />

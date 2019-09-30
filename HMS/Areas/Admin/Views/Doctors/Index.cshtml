@@ -3,73 +3,210 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+
+    .item:hover {
+        background-color: #b9f0cd;
+    }
+
+    .clear {
+        clear: both;
+    }
+
+    .items {
+        display: block;
+        margin: 20px 0;
+    }
+
+    .item {
+        background-color: aliceblue;
+        float: left;
+        margin: 0 10px 10px 0;
+        padding: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    }
+
+        .item img {
+            display: block;
+            margin: auto;
+        }
+
+    body > footer > div.row.items > div > h2 {
+        font-size: 16px;
+        display: block;
+        border-bottom: 1px solid #ccc;
+        margin: 0 0 10px 0;
+        padding: 0 0 5px 0;
+        padding-top: 10px;
+    }
+
+    .kop {
+        margin-left: 100px;
+    }
+
+    span {
+        float: right;
+    }
+
+    .shopping-cart {
+        display: inline-block;
+        background: url('http://cdn1.iconfinder.com/data/icons/jigsoar-icons/24/_cart.png') no-repeat 0 0;
+        width: 24px;
+        height: 24px;
+        margin: 0 10px 0 0;
+    }
+
+  
+    .snip1160 {
+        position: relative;
+        font-size: 25px;
+        color: #ffffff;
+        width: 50px;
+        margin: 5px;
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        /*background-color:cadetblue;*/
+        background-color: #acdcd5;
+    }
+
+    .snip1160 * {
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+    .snip1160:before,
+    .snip1160:after {
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+
+    .snip1160:before {
+        color: #000000;
+    }
+
+    .snip1160:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        border: 1px solid #000000;
+        content: '';
+        z-index: -1;
+        border-radius: 50%;
+        box-sizing: border-box;
+    }
+
+
+
+
+    .snip1160.green:before {
+        color: #78c2ad;
+        text-decoration: none;
+    }
+
+    .snip1160.green:after {
+        border-color: #78c2ad;
+    }
+
+
+
+    .snip1160:hover,
+    .snip1160 .hover {
+        text-decoration: none;
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+
+        .snip1160:hover:after,
+        .snip1160 .hover:after {
+            text-decoration: none;
+            opacity: 0.5;
+            border-width: 8px;
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 230px;
+            background-color: cadetblue;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0 0;
+            position: absolute;
+            z-index: 1;
+            top: 100%;
+            left: 50%;
+            margin-left: -115px;
+            font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 20px;
+            opacity: 0.7;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
+
+
+
+</style>
 
 <br /><br />
 
 
-<div class="row">
+      <div class="row">
 
-    <div class="col-6">
+          <div class="col-6">
 
-        <h2 class="text-info">Листа на доктори</h2>
+              <h2 class="text-info">Листа на доктори</h2>
 
-    </div>
+          </div>
 
-    <div class="col-6 text-right">
+          
+          <div class="col text-right">
 
-        <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Додај доктор </a>
-
-    </div>
-
-</div>
+              <a asp-action="Create" class="snip1160 green fas fa-plus tooltip" style="opacity: 1;"><span class="tooltiptext">Додај доктор</span>@*<i class="fas fa-plus"></i>*@</a>
+          </div>
+      </div>
 
 <br />
 
-<div class="row">
+<div class="row items">
 
 
     @foreach (var doctor in Model)
     {
 
-        <div class="col-4">
-
-            <div class="card mb-4">
-
-                <div class="card-header">
-
-                    <h4 class="my-0 font-weight-normal">
-
-                        <label style="font-size:23px;color:steelblue;">@doctor.Name</label>
-
-                    </h4>
-
-                </div>
 
 
+        <!-- single item  -->
+        <div class="item img-thumbnail">
+            <img src="@doctor.Image" alt="item" />
+            <h2>@doctor.Name</h2>
 
-                <img class="card-img-top" style="height:100%;" src="@doctor.Image" alt="Card Image" />
-
-                <div class="card-body">
-
-                    <div class="d-flex justify-content-between align-items-center">
-
-                        <div class="btn-group">
-
-                            <label style="font-size:20px; color:#a51313"><b>@doctor.PhoneNumber</b></label>
-
-                        </div>
-
-                        <partial name="_TableButtonPartial" model="doctor.Id" />
-
-                    </div>
-
-                </div>
-
-
-
+            <p>
+                Тел. бр: <em>@doctor.PhoneNumber</em>
+            </p>
+            <div class="kop">
+                <partial name="_TableButtonPartial" model="doctor.Id" />
             </div>
-
         </div>
+        <!--/ single item -->
+
+
+
 
     }
 </div>
