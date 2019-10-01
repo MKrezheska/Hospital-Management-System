@@ -1,6 +1,7 @@
 ﻿@model HMS.Models.Specialties
 @{
     ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Delete";
 }
 
 <style>
@@ -43,7 +44,7 @@
     <div class="p-4 border rounded">
         <div class="form-group row">
             <div class="col-2">
-                <label asp-for="Name"></label>
+                <label asp-for="Name">Име</label>
             </div>
             <div class="col-5">
                 <input asp-for="Name" disabled class="form-control" />
@@ -51,6 +52,7 @@
         </div>
         <br />
         <div class="form-group">
+            @*<input type="submit" class="btn btn-danger" asp-route-id="@Model.Id" value="Избриши" />*@
             <input type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" value="Избриши">
             <a asp-action="Index" class="btn btn-success">Назад кон листа</a>
         </div>
