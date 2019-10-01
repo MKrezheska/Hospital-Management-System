@@ -12,72 +12,72 @@
     <div class="p-4 border rounded row">
         <input hidden asp-for="Doctors.Id" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="col-8">
+        <div class="col-md-7">
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label asp-for="Doctors.Name"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input asp-for="Doctors.Name" class="form-control" />
                 </div>
                 <span asp-validation-for="Doctors.Name" class="text-danger"></span>
             </div>
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label asp-for="Doctors.PhoneNumber"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input asp-for="Doctors.PhoneNumber" class="form-control" />
                 </div>
                 <span asp-validation-for="Doctors.PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label asp-for="Doctors.Image"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input type="file" name="files" class="form-control" />
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label asp-for="Specialties"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <select asp-for="@Model.Doctors.SpecialityId" asp-items="Model.Specialties.ToSelectListItem(Model.Doctors.SpecialityId)" class="form-control"></select>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label asp-for="SubSpecialties"></label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <select asp-for="@Model.Doctors.SubSpecialtiesId" asp-items="Model.SubSpecialties.ToSelectListItem(Model.Doctors.SubSpecialtiesId)" class="form-control"></select>
                 </div>
             </div>
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label>Фокус</label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input asp-for="Doctors.Focus" class="form-control" />
                 </div>
                 <span asp-validation-for="Doctors.Focus" class="text-danger"></span>
             </div>
             <div class="form-group row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <label>Прима пациенти</label>
                 </div>
-                <div class="col-8">
+                <div class="col-md-8">
                     <input type="checkbox" asp-for="Doctors.Available" />
                 </div>
             </div>
         </div>
-        <div class="col-1">
+        <div class="col-md-1">
 
         </div>
-        <div class="col-3">
-            <img src="@Model.Doctors.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+        <div class="col-md-4">
+            <img src="@Model.Doctors.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9; max-width:250px" /><br /><br />
         </div>
 
 
