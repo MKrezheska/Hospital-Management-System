@@ -5,54 +5,56 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
 <br />
-<h2 class="text-info">Детали за доктор</h2>
+<br />
+<h2 class="text-info text-center">Детали за доктор</h2>
+
 
 <form method="post">
-    <div class="p-4 border rounded row">
+    <div class="wrapper p-4 border rounded row">
         <div class="col-8">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Name"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Name" class="form-control" readonly />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label>Фокус</label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Focus" class="form-control" readonly />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="PhoneNumber"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="PhoneNumber" class="form-control" readonly />
-                </div>
-            </div>
 
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Specialties"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Specialties.Name" class="form-control" readonly />
-                </div>
+            <div class="col-4">
+                <label asp-for="Name" style="font-weight:bold"></label>
             </div>
+            <div class="col-8">
+                <p>@Model.Name</p>
+            </div>
+            <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+            <div class="col-4">
+                <label asp-for="Focus" style="font-weight:bold"></label>
+            </div>
+            <div class="col-8">
+                <p>@Model.Focus</p>
+            </div>
+            <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
+            <div class="col-4">
+                <label asp-for="PhoneNumber" style="font-weight:bold"></label>
+            </div>
+            <div class="col-8">
+                <p>@Model.PhoneNumber</p>
+            </div>
+            <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
+            <div class="col-4">
+                <label asp-for="Specialties" style="font-weight:bold"></label>
+            </div>
+            <div class="col-8">
+                <p>@Model.Specialties.Name</p>
+            </div>
+            <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
             @if (!Model.SubSpecialties.Name.Equals("--None--"))
             {
-            <div class="form-group row">
+
                 <div class="col-4">
-                    <label asp-for="SubSpecialties"></label>
+                    <label asp-for="SubSpecialties" style="font-weight:bold"></label>
                 </div>
                 <div class="col-8">
-                    <input asp-for="SubSpecialties.Name" class="form-control" readonly />
+                    <p>@Model.SubSpecialties.Name</p>
                 </div>
-            </div>
+                <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
+
             }
             <div class="form-group row">
                 <div class="col-4">
@@ -70,17 +72,12 @@
 
                     @if (isInBag)
                     {
-                        <button type="submit" value="Remove From Bag" asp-action="remove" asp-route-id="@Model.Id" class="btn btn-danger form-control">Откажи термин</button>
+                        <button type="submit" value="Remove From Bag" asp-action="remove" asp-route-id="@Model.Id" class="btn btn-danger form-control">Remove From Bag</button>
 
                     }
                     else
                     {
-                        //added if
-                        if (Model.Available == true)
-                        {
-                            <button type="submit" value="Add to Bag" asp-route-id="@Model.Id" class="btn btn-primary form-control">Закажи термин</button>
-
-                        }
+                        <button type="submit" value="Add to Bag" asp-route-id="@Model.Id" class="btn btn-primary form-control">Закажи термин</button>
                     }
                 </div>
             </div>
@@ -89,9 +86,13 @@
 
         </div>
         <div class="col-3">
-            <img src="@Model.Image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+            <img src="@Model.Image" width="100%" class="img-responsive" style="border-radius:5px; border:1px solid #bbb9b9;" />
             <br /><br />
-           
+            @if (Model.Available)
+            {
+                <img src="~/images/available.png" width="50" />
+
+            }
         </div>
 
 
@@ -103,3 +104,29 @@
     </div>
 </form>
 
+<style>
+    .wrapper {
+        width: 60%;
+        margin: 50px auto;
+        border-radius: 7px 7px 7px 7px;
+        border-color: #d7dfd9;
+        border-width: medium;
+        /*-webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+
+        /* VIA CSS MATIC https://goo.gl/cIbnS */
+    }
+
+    @@media screen and (max-width: 980px) {
+        .wrapper {
+            width: 100%;
+        }
+    }
+
+    @@media screen and (max-width: 680px) {
+        .wrapper {
+            width: 100%;
+        }
+    }
+</style>

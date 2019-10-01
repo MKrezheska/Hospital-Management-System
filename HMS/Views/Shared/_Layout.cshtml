@@ -50,6 +50,7 @@
             <a asp-area="Customer" asp-controller="Home" asp-action="Index"><img src="~/images/HMSM -logo.png" class="img-responsive mr-4 mobile-logo" width="90" height="90" /></a>
             <br />
             <ul>
+                <partial name="_LoginPartial" />
                 <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Index">Почетна</a></li>
 
                 @if (User.IsInRole(SD.SuperAdminEndUser))
@@ -89,7 +90,7 @@
                     </li>
 
                 }
-                <partial name="_LoginPartial" />
+                <li class="nav-item"><a class="nav-link" asp-area="Customer" asp-controller="Home" asp-action="Support">Поддршка</a></li>
             </ul>
 
             
