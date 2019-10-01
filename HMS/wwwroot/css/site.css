@@ -306,14 +306,17 @@ h1 {
     }
 
     #main-nav #bun {
-        position: fixed;
+        position: absolute;
         cursor: pointer;
         right: 30px;
-        top: 25px;
+        top: 0;
+        left: 0;
         width: 38px;
         height: 38px;
         border-radius: 5px;
         overflow: hidden;
+        margin-top: 25px;
+        margin-left: 25px;
     }
 
         #main-nav #bun .mmm-burger {
@@ -615,4 +618,12 @@ media screen and (max-width: 680px) {
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+.center {
+    margin: 0 auto;
+    display: block;
+    position: fixed;
+    left: calc((100% - 90px)/2);
+    z-index: 100000;
 }
