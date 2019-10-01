@@ -12,6 +12,7 @@
     <title>@ViewData["Title"] - HMS</title>
 
     <environment include="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/jquery-ui.css" />
@@ -19,12 +20,19 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </environment>
     <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/jquery-ui.css" />
         <link rel="stylesheet" href="~/css/jquery.timepicker.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     </environment>
+
+    
+    <!-- Start of  Zendesk Widget script -->
+    <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=8921c62b-3fd9-4364-85bf-1ae24719cb12"></script>
+    <!-- End of  Zendesk Widget script -->
+
 </head>
 <body>
     <article id="container">
@@ -170,6 +178,25 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
+
+
+    @* Zendesk settings *@
+
+    <script type="text/javascript">
+        window.zESettings = {
+            webWidget: {
+                launcher: {
+                    chatLabel: {
+                        '*': 'Ви треба помош ?'
+                    },
+                    label: {
+                        '*': 'Помош'
+                    }
+                }
+            }
+        };
+    </script>
+
 </body>
 </html>
 
