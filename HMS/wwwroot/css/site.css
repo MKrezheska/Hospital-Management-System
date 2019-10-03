@@ -575,13 +575,13 @@ header {
 }
 
 
-media screen and (max-width: 980px) {
+@media screen and (max-width: 980px) {
     .columns .column
 
 {
     margin-bottom: 5px;
     flex-basis: 40%;
-    &:nth-last-child(2)
+   &:nth-last-child(2)
 
 {
     margin-right: 0;
@@ -595,7 +595,7 @@ media screen and (max-width: 980px) {
 }
 }
 
-media screen and (max-width: 680px) {
+@media screen and (max-width: 680px) {
     .columns .column
 
 {
