@@ -5,7 +5,7 @@
         <h2 class="text-info">Листа на термини</h2>
         <br />
 
-        <div style="height:150px; background-color:aliceblue" class="container">
+        <div style="height:235PX; background-color:aliceblue" class="container">
             @* We will add search criteria *@
             <div class="col-12">
                 <div class="row" style="padding-top:10px;">
@@ -54,7 +54,8 @@
                     </div>
                     <div class="col-2">
                     </div>
-                    <div class="col-3">
+                    <div class="ui-resizable ml-3">
+
                         <button type="submit" name="submit" value="Search" class="btn btn-primary form-control">
                             <i class="fas fa-search"></i> Барај
                         </button>
@@ -80,8 +81,8 @@
        
         <br />
 
-        <div>
-            <table class="table table-striped border">
+        <div class="table-responsive">
+            <table class="table table-striped border ">
                 <tr class="table-info">
                     <th>
                         @Html.DisplayNameFor(m => m.Appointments.FirstOrDefault().DoctorUser.Name)

@@ -11,62 +11,62 @@
 
 
 <div class="p-4 border rounded row">
-    <div class="col-8">
+    <div class="col-md-7">
         <div class="form-group row">
-            <div class="col-5">
+            <div class="col-md-5">
                 <p>Име: </p>
             </div>
-            <div class="col-7">
+            <div class="col-md-7">
                 <p>@Model.Doctors.Name</p>
             </div>
         </div>
         <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
 
         <div class="form-group row">
-            <div class="col-5">
+            <div class="col-md-5">
                 <p>Тел. бр:</p>
             </div>
-            <div class="col-7">
+            <div class="col-md-7">
                 <p>@Model.Doctors.PhoneNumber</p>
             </div>
         </div>
         <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
 
         <div class="form-group row">
-            <div class="col-5">
+            <div class="col-md-5">
                 <p>Специјалност: </p>
             </div>
-            <div class="col-7">
+            <div class="col-md-7">
                 <p>@Model.Doctors.Specialties.Name</p>
             </div>
         </div>
         <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
 
         <div class="form-group row">
-            <div class="col-5">
+            <div class="col-md-5">
                 <p>Субспецијалност: </p>
             </div>
-            <div class="col-7">
+            <div class="col-md-7">
                 <p>@Model.Doctors.SubSpecialties.Name</p>
             </div>
         </div>
         <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
 
         <div class="form-group row">
-            <div class="col-5">
+            <div class="col-md-5">
                 <p>Фокус: </p>
             </div>
-            <div class="col-7">
+            <div class="col-md-7">
                 <p>@Model.Doctors.Focus</p>
             </div>
         </div>
         <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
 
         <div class="form-group row">
-            <div class="col-5">
+            <div class="col-md-5">
                 <p>Прима пациенти: </p>
             </div>
-            <div class="col-7">
+            <div class="col-md-7">
                 @if (Model.Doctors.Available == true)
                 {
                     <i class="fas fa-check"></i>
@@ -80,8 +80,8 @@
     </div>
 
 
-    <div class="col-4 mx-auto d-block">
-        <img src="@Model.Doctors.Image" width="100%" class="rounded-circle border border-info" />
+    <div class="col-md-4 mx-auto d-block">
+        <img src="@Model.Doctors.Image" width="100%" class="rounded-circle border border-info" style="max-width: 250px;"/>
         <br /> <br />
     </div>
 
