@@ -50,11 +50,17 @@ $('document').ready(function () {
 });
 
 function closeOut() {
+    var screenWidth = $(window).width();
+
     $('body').toggleClass('scroll-jam');
     $('#sidebar').toggleClass('nav-slide');
     $('#container').toggleClass('body-slide');
     $('.nav-item').toggleClass('item-slide');
     $('.nav-item').removeClass('selected');
+    if (screenWidth < 400) {
+        $('.center').toggleClass('logo');
+    }
+    
     $('.sub-nav').each(function () {
         $(this).hide();
     });

@@ -21,7 +21,7 @@
             </div>
             <hr style="border: 0; height: 1px; background-image: -webkit-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -moz-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -ms-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0); background-image: -o-linear-gradient(left, #f0f0f0, #6CC3D5, #f0f0f0);">
             <div class="col-4">
-                <label asp-for="Focus" style="font-weight:bold"></label>
+                <label style="font-weight:bold">Фокус</label>
             </div>
             <div class="col-8">
                 <p>@Model.Focus</p>
@@ -72,7 +72,7 @@
 
                     @if (isInBag)
                     {
-                        <button type="submit" value="Remove From Bag" asp-action="remove" asp-route-id="@Model.Id" class="btn btn-danger form-control">Remove From Bag</button>
+                        <button type="submit" value="Remove From Bag" asp-action="remove" asp-route-id="@Model.Id" class="btn btn-danger form-control">Откажи термин</button>
 
                     }
                     else
